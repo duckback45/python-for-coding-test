@@ -1,8 +1,10 @@
-n = int(input())
+# n = int(input())
+n = 2
 # 연산을 수행하고자 하는 수 리스트
-data = list(map(int, input().split()))
+# data = list(map(int, input().split()))
+data = list(map(int, "5 6".split()))
 # 더하기, 빼기, 곱하기, 나누기 연산자 개수
-add, sub, mul, div = map(int, input().split())
+add, sub, mul, div = map(int, "0 0 1 0".split())
 
 # 최솟값과 최댓값 초기화
 min_value = 1e9
@@ -35,8 +37,9 @@ def dfs(i, now):
             div += 1
 
 # DFS 메서드 호출
-dfs(1, data[0])
+if __name__ == "__main__":
+    dfs(1, data[0])
+    print(max_value)
+    print(min_value)
 
 # 최댓값과 최솟값 차례대로 출력
-print(max_value)
-print(min_value)

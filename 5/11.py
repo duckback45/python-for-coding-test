@@ -1,11 +1,11 @@
 from collections import deque
 
 # N, M을 공백을 기준으로 구분하여 입력 받기
-n, m = map(int, input().split())
+n, m = 5, 6
 # 2차원 리스트의 맵 정보 입력 받기
 graph = []
-for i in range(n):
-    graph.append(list(map(int, input())))
+# for i in range(n):
+#     graph.append(list(map(int, input())))
 
 # 이동할 네 가지 방향 정의 (상, 하, 좌, 우)
 dx = [-1, 1, 0, 0]
@@ -21,6 +21,9 @@ def bfs(x, y):
         x, y = queue.popleft()
         # 현재 위치에서 4가지 방향으로의 위치 확인
         for i in range(4):
+            if graph[n -1][m - 1] != 1:
+                break
+
             nx = x + dx[i]
             ny = y + dy[i]
             # 미로 찾기 공간을 벗어난 경우 무시
@@ -37,4 +40,13 @@ def bfs(x, y):
     return graph[n - 1][m - 1]
 
 # BFS를 수행한 결과 출력
-print(bfs(0, 0))
+
+if __name__ == '__main__':
+    graph.append(list(map(int, "101010")))
+    graph.append(list(map(int, "111111")))
+    graph.append(list(map(int, "000001")))
+    graph.append(list(map(int, "111111")))
+    graph.append(list(map(int, "111111")))
+
+
+    print(bfs(0, 0))

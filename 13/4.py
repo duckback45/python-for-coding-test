@@ -1,4 +1,5 @@
 # "균형잡힌 괄호 문자열"의 인덱스 반환
+answer = ''
 def balanced_index(p):
     count = 0 # 왼쪽 괄호의 개수
     for i in range(len(p)):
@@ -22,7 +23,7 @@ def check_proper(p):
     return True # 쌍이 맞는 경우에 True 반환
 
 def solution(p):
-    answer = ''
+    global answer
     if p == '':
         return answer
     index = balanced_index(p)
@@ -44,3 +45,7 @@ def solution(p):
                 u[i] = '('
         answer += "".join(u)
     return answer
+
+if __name__ == "__main__":
+    param = list(map(str, '()))((()'))
+    solution(param)

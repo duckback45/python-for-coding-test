@@ -1,11 +1,16 @@
 # BOJ에서는 [언어]를 PyPy3로 설정하여 제출해주세요.
 
-n, m = map(int, input().split())
+#n, m = map(int, input().split())
+n, m = 4, 6
 data = [] # 초기 맵 리스트
 temp = [[0] * m for _ in range(n)] # 벽을 설치한 뒤의 맵 리스트
 
-for _ in range(n):
-    data.append(list(map(int, input().split())))
+#for _ in range(n):
+#    data.append(list(map(int, input().split())))
+data.append(list(map(int, "000000")))
+data.append(list(map(int, "000002")))
+data.append(list(map(int, "111002")))
+data.append(list(map(int, "000002")))
 
 # 4가지 이동 방향에 대한 리스트
 dx = [-1, 0, 1, 0]
@@ -39,16 +44,16 @@ def dfs(count):
     global result
     # 울타리가 3개 설치된 경우
     if count == 3:
-        for i in range(n):
-            for j in range(m):
-                temp[i][j] = data[i][j]
+        # for i in range(n):
+        #     for j in range(m):
+        #         temp[i][j] = data[i][j]
         # 각 바이러스의 위치에서 전파 진행
-        for i in range(n):
-            for j in range(m):
-                if temp[i][j] == 2:
-                    virus(i, j)
+        # for i in range(n):
+        #     for j in range(m):
+        #         if temp[i][j] == 2:
+        #             virus(i, j)
         # 안전 영역의 최대값 계산
-        result = max(result, get_score())
+        # result = max(result, get_score())
         return
     # 빈 공간에 울타리를 설치
     for i in range(n):
@@ -60,5 +65,6 @@ def dfs(count):
                 data[i][j] = 0
                 count -= 1
 
-dfs(0)
-print(result)
+if __name__ == "__main__":
+    dfs(0)
+    print(result)

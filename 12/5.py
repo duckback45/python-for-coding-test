@@ -1,20 +1,20 @@
-n = int(input())
-k = int(input())
-data = [[0] * (n + 1) for _ in range(n + 1)] # 맵 정보
-info = [] # 방향 회전 정보
-
-# 맵 정보(사과 있는 곳은 1로 표시)
-for _ in range(k):
-    a, b = map(int, input().split())
-    data[a][b] = 1
-
-# 방향 회전 정보 입력
-l = int(input())
-for _ in range(l):
-    x, c = input().split()
-    info.append((int(x), c))
-
-# 처음에는 오른쪽을 보고 있으므로(동, 남, 서, 북)
+# n = int(input())
+# k = int(input())
+# data = [[0] * (n + 1) for _ in range(n + 1)] # 맵 정보
+# info = [] # 방향 회전 정보
+#
+# # 맵 정보(사과 있는 곳은 1로 표시)
+# for _ in range(k):
+#     a, b = map(int, input().split())
+#     data[a][b] = 1
+#
+# # 방향 회전 정보 입력
+# l = int(input())
+# for _ in range(l):
+#     x, c = input().split()
+#     info.append((int(x), c))
+#
+# # 처음에는 오른쪽을 보고 있으므로(동, 남, 서, 북)
 dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
 
@@ -25,7 +25,7 @@ def turn(direction, c):
         direction = (direction + 1) % 4
     return direction
 
-def simulate():
+def simulate(n, k, data, l, info):
     x, y = 1, 1 # 뱀의 머리 위치
     data[x][y] = 2 # 뱀이 존재하는 위치는 2로 표시
     direction = 0 # 처음에는 동쪽을 보고 있음
@@ -59,4 +59,20 @@ def simulate():
             index += 1
     return time
 
-print(simulate())
+
+
+if __name__ == "__main__":
+    n = 6
+    k = 3
+    data = [[0] * (n + 1) for _ in range(n + 1)]
+    apple = [[3,4],[2,5],[5,3]]
+    for i in range(k):
+        a, b = map(int, apple[i])
+        data[a][b] = 1
+    l = 3
+    turns = [[3, "D"], [15, "L"], [17, "D"]]
+    info = []
+    for j in range(l):
+        x, c = turns[j]
+        info.append((int(x), c))
+    print(simulate(n, k, data, l, info))
