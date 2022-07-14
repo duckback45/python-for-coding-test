@@ -26,3 +26,9 @@ def solution(n, build_frame):
             if not possible(answer): # 가능한 구조물인지 확인
                 answer.remove([x, y, stuff]) # 가능한 구조물이 아니라면 다시 제거
     return sorted(answer) # 정렬된 결과를 반환
+
+
+if __name__ == "__main__":
+    n =5
+    build_frame=[[1,0,0,1], [1,1,1,1],[2,1,0,1],[2,2,1,1],[5,0,0,1],[5,1,0,1],[4,2,1,1],[3,2,1,1]]
+    print(solution(n, build_frame))
