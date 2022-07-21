@@ -1,6 +1,8 @@
 from itertools import permutations
 
 def solution(n, weak, dist):
+    dist.sort(reverse = True)
+
     # 길이를 2배로 늘려서 '원형'을 일자 형태로 변형
     length = len(weak)
     for i in range(length):
@@ -25,3 +27,9 @@ def solution(n, weak, dist):
     if answer > len(dist):
         return -1
     return answer
+
+if __name__ == "__main__":
+    n = 12
+    weak = [1,5,6,10]
+    dist = [1,2,3,4]
+    print(solution(n, weak, dist))
